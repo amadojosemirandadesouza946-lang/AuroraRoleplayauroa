@@ -4,6 +4,7 @@ plugins {
 }
 
 android {
+    namespace "com.aurora.samplauncher"
     namespace 'com.aurora.samplauncher'
     compileSdk 34
 

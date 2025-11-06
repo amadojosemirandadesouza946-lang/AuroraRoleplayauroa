@@ -1,17 +1,17 @@
 #!/bin/bash
-XML_FILE="app/src/main/AndroidManifest.xml"
+echo "🔧 Corrigindo AndroidManifest.xml e namespace..."
 
-echo "🛠️ Corrigindo AndroidManifest.xml..."
+MANIFEST="app/src/main/AndroidManifest.xml"
+GRADLE="app/build.gradle"
 
-cat > "$XML_FILE" <<XMLEND
+# Corrigir o AndroidManifest.xml
+cat > "$MANIFEST" <<XMLEND
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
-        android:allowBackup="true"
+        android:label="@string/app_name"
         android:icon="@mipmap/ic_launcher"
-        android:label="Aurora Roleplay"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
+        android:allowBackup="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
         <activity
@@ -28,5 +28,12 @@ cat > "$XML_FILE" <<XMLEND
 </manifest>
 XMLEND
 
-echo "✅ AndroidManifest.xml corrigido com sucesso!"
+# Corrigir o namespace no build.gradle
+if grep -q "namespace" "$GRADLE"; then
+  sed -i "s/namespace .*/namespace com.aurora.launcher/" "$GRADLE"
+else
+  sed -i "/android {/a \    namespace com.aurora.launcher" "$GRADLE"
+fi
+
+echo "✅ Correção concluída!"
 

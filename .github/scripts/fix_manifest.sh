@@ -37,3 +37,4 @@ fi
 
 echo "✅ Correção concluída!"
 
+# Forçar novo build Thu Nov  6 12:49:06 -03 2025

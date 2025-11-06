@@ -1,0 +1,32 @@
+#!/bin/bash
+XML_FILE="app/src/main/AndroidManifest.xml"
+
+echo "🛠️ Corrigindo AndroidManifest.xml..."
+
+cat > "$XML_FILE" <<XMLEND
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="Aurora Roleplay"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+    </application>
+
+</manifest>
+XMLEND
+
+echo "✅ AndroidManifest.xml corrigido com sucesso!"
+

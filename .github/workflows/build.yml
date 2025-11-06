@@ -25,7 +25,7 @@ jobs:
           wget https://services.gradle.org/distributions/gradle-8.7-bin.zip
           unzip -q gradle-8.7-bin.zip
           sudo mv gradle-8.7 /opt/gradle
-          export PATH=$PATH:/opt/gradle/bin
+          echo "export PATH=\$PATH:/opt/gradle/bin" >> \$GITHUB_ENV
           echo "Gradle instalado com sucesso!"
 
       - name: ⚙️ Corrigir AndroidManifest.xml
@@ -33,7 +33,7 @@ jobs:
 
       - name: 🏗️ Construir APK
         run: |
-          cd app
+          chmod +x gradlew
           ./gradlew assembleRelease
 
       - name: 📦 Enviar APK gerado

@@ -38,3 +38,4 @@ jobs:
         with:
           name: AuroraRoleplay-APK
           path: app/build/outputs/apk/release/app-release.apk
+# build trigger Thu Nov  6 13:55:52 -03 2025
